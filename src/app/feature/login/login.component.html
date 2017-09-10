@@ -1,0 +1,8 @@
+<div>
+  <p>
+    <span>{{title | uppercase | currencyformater:' '}}</span>
+  </p>
+  <input [(ngModel)]="username" id="username" type="text" />
+  <input [(ngModel)]="password" id="password" type="password" name="password" />
+  <button (click)="login()" id="enter">Enter</button>
+</div>

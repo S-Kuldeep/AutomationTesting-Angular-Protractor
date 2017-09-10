@@ -1,0 +1,8 @@
+<div>
+  Search : 
+  <input [(ngModel)]="searchText" id="productName" type="text" />
+  <button (click)="loadproduct()" id="btnSearch">Search</button>
+  <li class="productlist" *ngFor="let product of products">
+   {{product.productname}}
+  </li>
+</div>
