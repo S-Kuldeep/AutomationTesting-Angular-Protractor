@@ -4,7 +4,7 @@ The main purpose of this project to demonstrate automation testing with angular 
 
 ## install npm
 
-Run `ng install` 
+Run `npm install` 
 
 ## run automation testing
 
