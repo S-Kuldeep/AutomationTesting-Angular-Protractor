@@ -18,9 +18,22 @@ describe('sports-site App', () => {
     expect(browser.getCurrentUrl()).toContain('product');
   });
   it('SearchProductListByName', () => {
+    let expectedProductList:string[]=[ 'A', 'B', 'C', 'D' ];
+
     this._AppProductListPage.ClickproductlistLink();
+
     this._AppProductListPage.EnterproductName();
+
     this._AppProductListPage.ClickproductlistSearch();
-    expect(this._AppProductListPage.getProductListCount()).toEqual(5);
+
+    this._AppProductListPage.getProductListCount().then(function(count){
+      //first assert to check product count
+      expect(count).toEqual(expectedProductList.length);
+    });
+
+    this._AppProductListPage.getProductListItems().then(function(items){
+      //second assert to check product items
+      expect(items).toEqual(expectedProductList);
+    });
   });
 });

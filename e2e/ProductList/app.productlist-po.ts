@@ -1,4 +1,4 @@
-import { browser, by, element, Key, protractor } from 'protractor';
+import { browser, by, element, Key, protractor, ElementFinder, $ } from 'protractor';
 
 export class AppProductListPage {
   ClickproductlistLink(): void {
@@ -18,10 +18,23 @@ export class AppProductListPage {
         productsearchbtn.click();
       })
   }
-  getProductListCount():number{
-    let productlist:string[];
-    var products=element(by.className("productlist"));
-    return productlist.length;
+  getProductListCount(){
+   return browser.wait(this.checkIfProductLoaded(".productlist"), 10000).then(function(){
+       return element.all(by.css(".productlist")).count()
+    });
+  }  
+  getProductListItems(){
+   return browser.wait(this.checkIfProductLoaded(".productlist"), 10000).then(function(){
+       return element.all(by.css(".productlist")).map(function(element,index){
+          return element.getText();
+       });
+   });
   }
-}
+ checkIfProductLoaded(cssname:string){
+    var elements=element.all(by.css(cssname))
+    return elements.count().then(function (elementcount){
+        return elementcount > 0;
+    })
+  }                               
+}  
 
