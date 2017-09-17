@@ -8,9 +8,12 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
-  capabilities: {
-    'browserName': 'chrome'
-  },
+  multiCapabilities: [{
+    'browserName': 'chrome',
+    chromeOptions: {
+      args: [ "--headless", "--window-size=800x600" ]
+    }
+  }],
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
@@ -23,6 +26,57 @@ exports.config = {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
-  }
+    var jasmineReporters = require('jasmine-reporters');
+    jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+        consolidateAll: true,
+        savePath: './e2e/e2e-TestResult/LastExecution/TestResultXML',
+        filePrefix: 'xmlresults'
+    }));
+
+    var fs = require('fs-extra');
+    
+    // fs.renameSync('./e2e/e2e-TestResult/LastExecution'
+    // ,"./e2e/e2e-TestResult/ArchivedOn-"+ Math.floor(Date.now()/1000));
+
+    fs.emptyDir('./e2e/e2e-TestResult/LastExecution/screenshots', function (err) {
+           console.log(err);
+       });
+       jasmine.getEnv().addReporter({
+           specDone: function(result) {
+               if (result.status == 'failed') {
+                   browser.getCapabilities().then(function (caps) {
+                       var browserName = caps.get('browserName');
+    
+                       browser.takeScreenshot().then(function (png) {
+                           var stream = fs.createWriteStream('./e2e/e2e-TestResult/LastExecution/screenshots/' + browserName + '-' + result.fullName+ '.png');
+                           stream.write(new Buffer(png, 'base64'));
+                           stream.end();
+                       });
+                   });
+               }
+           }
+       });
+  },
+  onComplete() {
+    var browserName, browserVersion;
+    var capsPromise = browser.getCapabilities();
+
+    capsPromise.then(function (caps) {
+       browserName = caps.get('browserName');
+       browserVersion = caps.get('version');
+
+       var HTMLReport = require('protractor-html-reporter');
+
+       testConfig = {
+           reportTitle: 'e2e Test Execution Report',
+           outputPath: './e2e/e2e-TestResult/LastExecution',
+           screenshotPath: './screenshots',
+           testBrowser: browserName,
+           browserVersion: browserVersion,
+           modifiedSuiteName: false,
+           screenshotsOnlyOnFailure: true
+       };
+       new HTMLReport().from('./e2e/e2e-TestResult/LastExecution/TestResultXML/xmlresults.xml', testConfig);
+   });
+}
 };

@@ -10,7 +10,7 @@ describe('sports-site App', () => {
   beforeEach(() => {
     this._loginPageSteps = new LoginPageSteps();
     this._AppProductListPage=new AppProductListPage();
-    this._loginPageSteps.doLogin();
+   // this._loginPageSteps.doLogin();
   });
 
   it('NavigateProductList', () => {
@@ -18,9 +18,9 @@ describe('sports-site App', () => {
     expect(browser.getCurrentUrl()).toContain('product');
   });
   it('SearchProductListByName', () => {
-    let expectedProductList:string[]=[ 'A', 'B', 'C', 'D' ];
+    let expectedProductList:string[]=[ 'A', 'B', 'C' ];
 
-    this._AppProductListPage.ClickproductlistLink();
+    //this._AppProductListPage.ClickproductlistLink();
 
     this._AppProductListPage.EnterproductName();
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="sports-site App" timestamp="2017-09-17T08:52:23" hostname="localhost" time="3.863" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="sports-site App" name="Login" time="3.858" />
+ </testsuite>
+ <testsuite name="sports-site App" timestamp="2017-09-17T08:52:27" hostname="localhost" time="2.858" errors="0" tests="2" skipped="0" disabled="0" failures="2">
+  <testcase classname="sports-site App" name="NavigateProductList" time="1.72" />
+  <testcase classname="sports-site App" name="SearchProductListByName" time="1.134">
+   <failure type="toEqual" message="Expected 4 to equal 3."><![CDATA[Error: Failed expectation
+    at D:\CodePractice\AutomationTesting-Angular-Protrector\e2e\ProductList\app.productlist.e2e-spec.ts:31:21
+    at ManagedPromise.invokeCallback_ (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:1366:14)
+    at TaskQueue.execute_ (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2970:14)
+    at TaskQueue.executeNext_ (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2953:27)
+    at asyncRun (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2813:27)
+    at C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:676:7
+    at process._tickCallback (internal/process/next_tick.js:109:7)]]>
+   </failure>
+   <failure type="toEqual" message="Expected $.length = 4 to equal 3.
+Expected $[3] = &apos;D&apos; to equal undefined."><![CDATA[Error: Failed expectation
+    at D:\CodePractice\AutomationTesting-Angular-Protrector\e2e\ProductList\app.productlist.e2e-spec.ts:36:21
+    at ManagedPromise.invokeCallback_ (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:1366:14)
+    at TaskQueue.execute_ (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2970:14)
+    at TaskQueue.executeNext_ (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2953:27)
+    at asyncRun (C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2813:27)
+    at C:\Users\user\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:676:7
+    at process._tickCallback (internal/process/next_tick.js:109:7)]]>
+   </failure>
+  </testcase>
+ </testsuite>
+</testsuites>
