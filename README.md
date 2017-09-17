@@ -9,3 +9,8 @@ Run `npm install`
 ## run automation testing
 
 Run `ng e2e` 
+
+## after test case execution, test case reports generated at below path
+
+.\e2e\e2e-TestResult\LastExecution
+
