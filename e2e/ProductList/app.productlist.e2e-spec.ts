@@ -3,7 +3,7 @@ import { browser } from "protractor";
 import { AppProductListPage } from "./app.productlist-po";
 
 
-describe('sports-site App', () => {
+describe('Product List Test Suite', () => {
   let _loginPageSteps: LoginPageSteps;
   let _AppProductListPage:AppProductListPage;
   
@@ -14,11 +14,12 @@ describe('sports-site App', () => {
   });
 
   it('NavigateProductList', () => {
+    browser.get("http://localhost:4200/home");
     this._AppProductListPage.ClickproductlistLink();
     expect(browser.getCurrentUrl()).toContain('product');
   });
   it('SearchProductListByName', () => {
-    let expectedProductList:string[]=[ 'A', 'B', 'C' ];
+    let expectedProductList:string[]=[ 'A', 'B', 'C','D' ];
 
     //this._AppProductListPage.ClickproductlistLink();
 

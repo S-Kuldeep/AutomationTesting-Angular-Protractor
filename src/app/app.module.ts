@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router'
 import { appRoutes } from "./app.route";
 import { HomeComponent } from './feature/home/home.component';
 import { ProductlistComponent } from './feature/productlist/productlist.component';
+import { MassuploadComponent } from './feature/massupload/massupload.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProductlistComponent } from './feature/productlist/productlist.componen
     SportproductComponent,
     CurrencyformaterPipe,
     HomeComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    MassuploadComponent
   ],
   imports: [
     FormsModule,

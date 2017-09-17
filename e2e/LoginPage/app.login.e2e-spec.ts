@@ -3,7 +3,7 @@ import { browser } from "protractor";
 import { ApploginPage } from "./app.login-po";
 
 
-describe('sports-site App', () => {
+describe('Login Test Suite', () => {
   let _loginPageSteps: LoginPageSteps;
 
   beforeEach(() => {
